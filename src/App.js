@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Navbar from "./Components/Navbar";
+import Home from "./Components/Home";
+import AboutView from "./Components/AboutView";
+import { Switch, Route } from "react-router-dom";
+import SearchView from "./Components/SearchView";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchText, setSearchText] = useState("");
+
+  useEffect(() => {
+
+      const fetch = require('node-fetch');
+
+      const url = `https://api.themoviedb.org/3/search/movie?query=${searchText}&include_adult=false&language=en-US&page=1`;
+      const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYjIyNDRmOThhN2JlYWM1MjVlMjRmNzAxZDE2NTU5MiIsIm5iZiI6MTcyMzI3OTk1MC40NzU1NzUsInN1YiI6IjY2YjcyODJkNmY5MmI3NjcyOGFhOGM4YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.O81FSZSILrO-iWP8Hsw_H79BXiyWNpu8XLpbpVZXHFM'
+        }
+      };
+      if(searchText)
+      {fetch(url, options)
+        .then(res => res.json())
+        .then(data=>{
+  setSearchResults(data.results)
+})}  }, [searchText]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar searchText={searchText} setSearchText={setSearchText} />
+      <Switch>
+        <Route path="/" exact component={Home}></Route>
+        <Route path="/about" exact component={AboutView}></Route>
+        <Route path="/search" exact>
+          <SearchView keyword={searchText} searchResults={searchResults} />
+        </Route>
+      </Switch>
     </div>
   );
 }
