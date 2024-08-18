@@ -5,7 +5,9 @@ import Home from "./Components/Home";
 import AboutView from "./Components/AboutView";
 import { Switch, Route } from "react-router-dom";
 import SearchView from "./Components/SearchView";
+import MovieView from "./Components/MovieView.js"
 import { useState, useEffect } from "react";
+import NotFound from "./Components/NotFound.js";
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -39,6 +41,8 @@ function App() {
         <Route path="/search" exact>
           <SearchView keyword={searchText} searchResults={searchResults} />
         </Route>
+        <Route path="/movies/:id" exact component={MovieView}></Route>
+        <Route path='*' component={NotFound}></Route>
       </Switch>
     </div>
   );
