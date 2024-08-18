@@ -1,20 +1,201 @@
-.hero-container{
-    position: relative;
-    z-index:100;
+/* Global Styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
 }
 
-.hero-text{
+/* Hero Section */
+.hero-container {
     position: relative;
-    z-index:200;
+    z-index: 100;
+    background-color: #000;
+    text-align: center;
+    padding: 60px 20px;
 }
 
-.hero-backdrop{
+.hero-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.hero-backdrop {
     position: absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: center center;
-    opacity: 0.4;
+    opacity: 0.5;
 }
+
+/* Movie Card */
+.card {
+    background-color: #2c2c2c;
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.card-text {
+    color: #b0b0b0;
+}
+
+/* Button */
+.btn-primary {
+    background-color: #ff4c4c;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #ff1a1a;
+}
+
+/* NotFound Page */
+.notfound-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #1a1a1a 50%, #333333 100%);
+    color: #ffffff;
+    text-align: center;
+}
+
+.notfound-container h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: #ff4c4c;
+}
+
+.notfound-container p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.notfound-container .btn {
+    padding: 12px 30px;
+    font-size: 1.25rem;
+    background-color: #ff4c4c;
+    border-radius: 30px;
+    transition: background-color 0.3s;
+}
+
+.notfound-container .btn:hover {
+    background-color: #ff1a1a;
+}
+
+.cool-intro {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.8)), url('https://images.unsplash.com/photo-1706508097764-80b9b7ee4d88?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+    color: #f1f1f1;
+    padding: 10px 9px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.cool-intro h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    color: #ff4c4c;
+    text-shadow: 0 4px 10px rgba(255, 76, 76, 0.5);
+}
+
+.cool-intro p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    line-height: 1.8;
+    margin-top: 20px;
+}
+
+.cool-intro p::first-letter {
+    font-size: 2rem;
+    color: #ff4c4c;
+    font-weight: bold;
+}
+
+
+/* Container for the navbar to handle spacing and alignment */
+.navbar-nav {
+    display: flex;
+    gap: 25px; /* Maintains good spacing between links */
+    flex-wrap: nowrap; /* Prevent wrapping to keep items in a horizontal line */
+    align-items: center; /* Vertically center-aligns the items */
+}
+
+/* NavLink base styling */
+.navbar .nav-link {
+    color: #ffffff; /* White text */
+    background-color: #000000; /* Black background */
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    letter-spacing: 1px; /* Increased spacing for a bold look */
+    text-transform: uppercase; /* Uppercase text for emphasis */
+    display: inline-block; /* Ensures horizontal alignment */
+}
+
+/* Funky Hover effect for NavLink */
+.navbar .nav-link:hover {
+    color: #000000; /* Black text on hover */
+    background-color: #ffffff; /* White background on hover */
+    transform: scale(1.1); /* No rotation to keep links horizontal */
+    box-shadow: 0px 4px 20px rgba(255, 255, 255, 0.7), 0px 0px 15px rgba(0, 0, 0, 0.2) inset; /* Enhanced shadow effect */
+    animation: pulse 1s infinite; /* Pulsing effect on hover */
+}
+
+/* Active NavLink styling */
+.navbar .nav-link.active {
+    color: #000000; /* Black text for active link */
+    background-color: #ffffff; /* White background for active link */
+    transform: scale(1.1); /* No rotation to keep links horizontal */
+    box-shadow: 0px 4px 25px rgba(255, 255, 255, 0.9), 0px 0px 20px rgba(0, 0, 0, 0.3) inset; /* Stronger shadow effect */
+}
+
+/* Focus effect for accessibility */
+.navbar .nav-link:focus {
+    outline: none;
+    box-shadow: 0 0 8px 3px rgba(255, 255, 255, 0.8); /* White focus glow */
+}
+
+/* Overall navbar background */
+.navbar {
+    background-color: #000000; /* Pure black background */
+}
+
+/* Pulsing animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+
+
