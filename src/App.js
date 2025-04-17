@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
 
       const fetch = require('node-fetch');
-
+    //this url is used to search movies
       const url = `https://api.themoviedb.org/3/search/movie?query=${searchText}&include_adult=false&language=en-US&page=1`;
       const options = {
         method: 'GET',
